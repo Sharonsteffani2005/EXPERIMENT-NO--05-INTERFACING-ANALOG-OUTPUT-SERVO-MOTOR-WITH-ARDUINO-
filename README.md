@@ -1,8 +1,8 @@
-###  DATE: 
+###  DATE: 22.03.24
 
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT: 
+###  NAME: SHARON STEFFANI.F
+###  ROLL NO : 212223110049
+###  DEPARTMENT: CSE(IOT)
 
 
 # EXPERIMENT NO 05 INTERFACING ANALOG OUTPUT SERVO MOTOR WITH ARDUINO
@@ -45,13 +45,21 @@ An external controller (such as the Arduino) tells the servo where to go with a 
 
 ### Figure-03 SERVO MOTOR OVERVIEW 
 
+### FIGURE 04 CIRCUIT DIAGRAM
+
+ ![image](https://github.com/Sharonsteffani2005/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/144979934/88811b49-7b70-499d-b1e0-fde5278c668d)
+
+
+![image](https://github.com/Sharonsteffani2005/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/144979934/d7d610c6-0cd4-4792-a1da-7f03a4732959)
+
  
+###SCHEMATIC VIEW:
 
+![Screenshot 2024-03-24 205809](https://github.com/Sharonsteffani2005/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/144979934/d0c80472-82f7-4af5-9af4-bc1396d8c5be)
 
- 
+###GRAPHICAL REPRESENTATION
 
-
-
+![image](https://github.com/Sharonsteffani2005/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/144979934/3478c93c-f273-4d66-bcf3-ba231a5cbdeb)
 
 
 CIRCUIT DIAGRAM
@@ -74,15 +82,50 @@ CIRCUIT DIAGRAM
 
 
 ### PROGRAM :
- 
+```
+#include<Servo.h>
+Servo sr1;
+int pos=0;
+int red=9;
+int green=8;
+void setup()
+{
+  sr1.attach(6);
+  Serial.begin(9600);
+  pinMode(red,OUTPUT);
+  pinMode(green,OUTPUT);
+}
+void loop()
+{
+  for(pos=0;pos<=180;pos+=5)
+  {
+    sr1.write(pos);
+      delay(200);
+    Serial.println(pos);
+     if(pos>=120)
+  {
+    digitalWrite(red,HIGH);
+      delay(200);
+    digitalWrite(red,LOW);
+      delay(200);
+  }
+  }
+  for(pos=180;pos>=0;pos-=5)
+  {
+    sr1.write(pos);
+      delay(200);
+    Serial.println(pos);
+  }
 
-
-
-
-
-
-
-
+    if(pos<=100)
+   {
+     digitalWrite(green,HIGH);
+     delay(200);
+     digitalWrite(green,LOW);
+     delay(200);
+}
+  }
+```
 
 ### RESULTS: 
 Arduino uno interfacing with servo motor is learned and angular position is controlled .
